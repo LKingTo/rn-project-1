@@ -46,6 +46,7 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "prompt-sync": "^4.2.0",
+    "prop-types": "^15.6.2",
     "react-test-renderer": "16.9.0"
   },
   "jest": {

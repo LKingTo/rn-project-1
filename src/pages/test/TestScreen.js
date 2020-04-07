@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, Button } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { inject, observer } from 'mobx-react'
 import viewUtils from '../../utils/viewUtils'
-
 import Screen from '../Screen'
+import WLoading from '../../components/WLoading/WLoading'
 
 @inject('store')
 @observer
@@ -13,6 +13,9 @@ export default class TestScreen extends Screen {
         super(props)
         console.log('props', props)
         this.store = this.props.store
+        this.state = {
+            loading: false
+        }
     }
 
     render() {
@@ -33,6 +36,13 @@ export default class TestScreen extends Screen {
                     <Button
                         title="viewUtils: toast"
                         onPress={() => viewUtils.toast('this is a toast')} />
+                    <Button
+                        title="WLoading"
+                        onPress={() => {
+                            const loading = this.state.loading
+                            this.setState({ loading: !loading })
+                        }} />
+                    {this.state.loading ? <WLoading text={'正在加载...'} /> : null}
                 </View>
             </SafeAreaView>
         )
