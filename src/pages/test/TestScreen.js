@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Button } from 'react-native'
 import { inject, observer } from 'mobx-react'
 
 import Screen from '../Screen'
 
 @inject('store')
 @observer
-export default class HomeScreen extends Screen {
+export default class TestScreen extends Screen {
     constructor(props) {
         super(props)
         console.log('props', props)
@@ -16,8 +16,11 @@ export default class HomeScreen extends Screen {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Home Screen</Text>
-                <Text>store: {JSON.stringify(this.store)}</Text>
+                <Text>Test Screen</Text>
+                <Text>store.system: {JSON.stringify(this.store.system)}</Text>
+                <Button
+                    title="update store.system"
+                    onPress={() => this.store.system.update()} />
             </View>
         )
     }
