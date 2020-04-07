@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, Button } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import { inject, observer } from 'mobx-react'
 import Screen from '../Screen'
+import { EVENT_GLOBAL } from '../../constants/event'
 
 @inject('store')
 @observer
@@ -19,6 +20,7 @@ export default class HomeScreen extends Screen {
                 <View style={styles.container}>
                     <Text>Home Screen</Text>
                     <Text>store: {JSON.stringify(this.store)}</Text>
+                    <Button title="$emit event to Mine" onPress={() => this.$emit(EVENT_GLOBAL, { msg: 'msg from Home to Mine' })} />
                 </View>
             </SafeAreaView>
         )

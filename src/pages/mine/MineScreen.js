@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
 import Screen from '../Screen'
 import { inject, observer } from 'mobx-react'
+import { EVENT_GLOBAL } from '../../constants/event'
 
 @inject('store')
 @observer
@@ -11,6 +12,17 @@ export default class MineScreen extends Screen {
         super(props)
         console.log(props)
         this.store = this.props.store
+    }
+
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillMount() {
+        this.$on(EVENT_GLOBAL, (data) => {
+            console.log(data.msg)
+        })
+    }
+
+    componentWillUnmount() {
+        this.$off()
     }
 
     render() {
