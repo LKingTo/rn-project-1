@@ -5,6 +5,8 @@ import { inject, observer } from 'mobx-react'
 import viewUtils from '../../utils/viewUtils'
 import Screen from '../Screen'
 import WLoading from '../../components/WLoading/WLoading'
+import WIcon from '../../iconfont/WIcon'
+import IconUp from '../../iconfont/IconUp'
 
 @inject('store')
 @observer
@@ -43,6 +45,19 @@ export default class TestScreen extends Screen {
                             this.setState({ loading: !loading })
                         }} />
                     {this.state.loading ? <WLoading text={'正在加载...'} /> : null}
+                    <View style={{ flexDirection: 'row', flewWrap: 'warp' }}>
+                        <WIcon name="jia" size={20} />
+                        <WIcon name="right" color="green" size={30} />
+                        <WIcon name="left" color={['green', 'orange']} size={30} />
+                        <WIcon name="up" />
+                        <WIcon name="down" />
+                        <WIcon name="bianji" />
+                        <WIcon name="chenggong" />
+                        <WIcon name="fenxiang" />
+                        <WIcon name="dianzan" />
+                        <WIcon name="jianshao" />
+                        <IconUp color="orange" />
+                    </View>
                 </View>
             </SafeAreaView>
         )
