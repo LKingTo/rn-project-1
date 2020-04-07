@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-
+import { SafeAreaView } from 'react-navigation'
 import Screen from '../Screen'
 import { inject, observer } from 'mobx-react'
 
@@ -15,10 +15,12 @@ export default class MineScreen extends Screen {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Mine Screen</Text>
-                <Text>Store: {JSON.stringify(this.store)}</Text>
-            </View>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#285040' }}>
+                <View style={styles.container}>
+                    <Text>Mine Screen</Text>
+                    <Text>Store: {JSON.stringify(this.store)}</Text>
+                </View>
+            </SafeAreaView>
         )
     }
 }

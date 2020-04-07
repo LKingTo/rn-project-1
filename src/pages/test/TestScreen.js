@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
 import { inject, observer } from 'mobx-react'
+import viewUtils from '../../utils/viewUtils'
 
 import Screen from '../Screen'
 
@@ -15,13 +17,24 @@ export default class TestScreen extends Screen {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Test Screen</Text>
-                <Text>store.system: {JSON.stringify(this.store.system)}</Text>
-                <Button
-                    title="update store.system"
-                    onPress={() => this.store.system.update()} />
-            </View>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#285040' }}>
+                <View style={styles.container}>
+                    <Text>Test Screen</Text>
+                    <Text>store.system: {JSON.stringify(this.store.system)}</Text>
+                    <Button
+                        title="update store.system"
+                        onPress={() => this.store.system.update()} />
+                    <Button
+                        title="viewUtils: alert"
+                        onPress={() => viewUtils.alert('Alert', 'this is a alert')} />
+                    <Button
+                        title="viewUtils: confirm"
+                        onPress={() => viewUtils.confirm('Confirm', 'this is a confirm')} />
+                    <Button
+                        title="viewUtils: toast"
+                        onPress={() => viewUtils.toast('this is a toast')} />
+                </View>
+            </SafeAreaView>
         )
     }
 }
@@ -29,8 +42,8 @@ export default class TestScreen extends Screen {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'flex-start',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        // justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
     },
