@@ -1,16 +1,16 @@
-import System from './modules/system';
-import * as MobX from 'mobx';
+import System from './modules/system'
+import * as MobX from 'mobx'
 
 class Store {
-  constructor() {
-    this.system = new System();
-  }
+    constructor() {
+        this.system = new System()
+    }
 }
 
 MobX.configure({
-  enforceActions: 'always',
-});
+    enforceActions: 'always',
+})
 
-export const store = new Store();
+export const store = new Store()
 
-export default store;
+export default store
